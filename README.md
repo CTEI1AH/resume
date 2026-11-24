@@ -42,37 +42,44 @@ site/
 - цвет акцента — переменная `--accent` в начале `assets/style.css`
   (например, `#4b4bd6` — индиго, `#0f766e` — тёмно-бирюзовый, `#b45309` — янтарный).
 
-## Как опубликовать (получить ссылку)
+## Сайт уже опубликован
 
-### Вариант 1 — Netlify Drop (быстрее всего, 1 минута)
+**Живой адрес: <https://ctei1ah.github.io/resume/>**
 
-1. Откройте <https://app.netlify.com/drop>.
-2. Перетащите туда папку `site` целиком.
-3. Сайт сразу получит адрес вида `https://smth-random.netlify.app` — этой ссылкой уже можно делиться.
-4. Чтобы сохранить сайт навсегда и переименовать адрес — зарегистрируйтесь (бесплатно)
-   и задайте имя в *Site settings → Change site name*.
+Хостинг — GitHub Pages (бесплатно, работает круглосуточно без вашего компьютера).
+Репозиторий: <https://github.com/CTEI1AH/resume>
 
-### Вариант 2 — GitHub Pages (бесплатно, свой аккаунт)
+### Как обновить сайт
 
-1. Создайте репозиторий, например `resume`.
-2. Загрузите в него **содержимое** папки `site` (так, чтобы `index.html` лежал в корне).
-3. *Settings → Pages → Source: Deploy from a branch → main / (root) → Save*.
-4. Через минуту сайт будет по адресу `https://<логин>.github.io/resume/`.
+После правок в `index.html` или `assets/` достаточно отправить изменения в репозиторий:
 
-### Вариант 3 — Vercel / Cloudflare Pages
+```bash
+cd site
+git add -A
+git commit -m "Правки текста"
+git push
+```
 
-Тоже подойдёт: импортируйте репозиторий, framework preset — **Other**,
-build command оставьте пустым, output directory — `.`.
+GitHub пересоберёт сайт автоматически, обновление появится через ~30 секунд.
 
-## После публикации
+### Если понадобится другой хостинг
 
-Замените в `index.html` два адреса-заглушки на настоящий домен:
+- **Netlify Drop** — <https://app.netlify.com/drop>, перетащить папку `site`;
+  адрес будет вида `https://smth-random.netlify.app`.
+- **Cloudflare Pages / Vercel** — импортировать репозиторий, framework preset **Other**,
+  build command пустой, output directory `.`.
 
-- `<link rel="canonical" href="https://example.com/">`
-- `"url": "https://example.com/"` в JSON-LD;
+## После публикации (уже сделано)
 
-и в `<meta property="og:image" content="assets/og.png">` укажите полный адрес
-(`https://ваш-домен/assets/og.png`) — так превью будет корректно открываться в мессенджерах.
+В `index.html` подставлен настоящий адрес:
+
+- `<link rel="canonical" href="https://ctei1ah.github.io/resume/">`
+- `"url": "https://ctei1ah.github.io/resume/"` в JSON-LD;
+- `<meta property="og:image">` и `twitter:image` указывают на полный адрес
+  `https://ctei1ah.github.io/resume/assets/og.png` — превью корректно открывается
+  в Telegram, WhatsApp и LinkedIn.
+
+При смене домена эти четыре места нужно обновить.
 
 ## Что уже учтено
 
